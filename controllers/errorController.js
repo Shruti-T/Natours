@@ -4,11 +4,18 @@ const handelCastErrorDB = err => {
   const message = `Invalid ${err.path}: ${err.value}.`;
   return new AppError(message, 400);
 };
+
+const handelDuplicateFieldsDB = err => {
+  const value = err.keyValue.name;
+  const message = `Duplicate field value: "${value}". Please use another value!`;
+  return new AppError(message, 400);
+};
+
 const sendErrorDev = (err, res) => {
   res.status(err.statusCode).json({
     status: err.status,
     error: err,
-    messgae: err.message,
+    message: err.message,
     stack: err.stack
   });
 };
@@ -47,6 +54,9 @@ module.exports = (err, req, res, next) => {
     error.name = err.name;
     if (error.name === 'CastError') {
       error = handelCastErrorDB(error);
+    }
+    if (error.code === 11000) {
+      error = handelDuplicateFieldsDB(error);
     }
     sendErrorProd(error, res);
   }
