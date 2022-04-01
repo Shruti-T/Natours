@@ -17,7 +17,8 @@ const userModel = new mongoose.Schema({
   password: {
     type: String,
     required: [true, 'Please provide a password'],
-    minLength: [8, 'A password must have minimum 8 characters!']
+    minLength: [8, 'A password must have minimum 8 characters!'],
+    select: false
   },
   passwordConfirm: {
     type: String,
@@ -42,6 +43,9 @@ userModel.pre('save', async function(next) {
   //we dont need confirm passwrod anymore... so to delete per say.. make it undefined.
   next();
 });
+
+userModel.methods.correctPassword = async (candidatePassword, userPassword) =>
+  await bcrypt.compare(candidatePassword, userPassword);
 
 const User = mongoose.model('User', userModel);
 
