@@ -12,7 +12,7 @@ const nodemailer = require('nodemailer');
 //   //activate in gmail "less secure app" option
 // };
 
-const sentEmail = option => {
+const sendEmail = async options => {
   //1) create a transportor
   const transportor = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
@@ -22,7 +22,17 @@ const sentEmail = option => {
       pass: process.env.EMAIL_PASSWORD
     }
   });
-  //activate in gmail "less secure app" option
+
   //2)Define the email options
+  const mailOptions = {
+    from: 'Shruti Tiwari <sh03shruti@gmail.com>',
+    to: options.email,
+    subject: options.subject,
+    text: options.message
+  };
+
   //3) actually send the email
+  await transportor.sendMail(mailOptions);
 };
+
+module.exports = sendEmail;
