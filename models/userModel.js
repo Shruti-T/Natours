@@ -53,6 +53,14 @@ userModel.pre('save', async function(next) {
   next();
 });
 
+userModel.pre('save', async function(next) {
+  if (!this.isModified('password') || this.isNew) {
+    return next();
+  }
+  this.passwordChangedAt = Date.now() - 1000;
+  next();
+});
+
 userModel.methods.correctPassword = async (candidatePassword, userPassword) =>
   await bcrypt.compare(candidatePassword, userPassword);
 
