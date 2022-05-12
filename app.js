@@ -3,6 +3,8 @@ const express = require('express');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -31,6 +33,14 @@ app.use('/api', limiter);
 
 //Body parser,reading data from the body into req.body [the '10kb' is 10 kiloByte, basically limiting the amount of body data so if user adds anything forcefully to body it is not accepted]
 app.use(express.json({ limit: '10kb' }));
+
+//Data sanitization against NoSQL query injection---> try postman login but in place of email put-> {"gt":""}
+//this will filter out all of the $,. symbols
+app.use(mongoSanitize());
+
+//Data sanitization against XSS
+//xss-clean helps remove some js_html code if ever inserted
+app.use(xss());
 
 //serving static files
 app.use(express.static(`${__dirname}/public`));
