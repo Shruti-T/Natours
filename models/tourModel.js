@@ -151,11 +151,20 @@ tourSchema.pre(/^find/, function(next) {
   this.start = Date.now();
   next();
 });
+tourSchema.pre(/^find/,function(next){
+  this.populate({
+    path:'guides',
+    select:'-__v -passwordChangedAt'
+  });
+  next();
+})
 
 tourSchema.post(/^find/, function(docs, next) {
   console.log(`Query took ${Date.now() - this.start} milliseconds!`);
   next();
 });
+
+
 
 // AGGREGATION MIDDLEWARE
 tourSchema.pre('aggregate', function(next) {
