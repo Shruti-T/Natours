@@ -7,6 +7,6 @@ const router = express.Router();
 router
   .route('/')
   .get(reviewController.getAllReviews)
-  .put(reviewController.createReview);
+  .post(reviewController.createReview);
 
 module.exports = router;
