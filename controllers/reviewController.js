@@ -1,14 +1,8 @@
 const review = require('../models/reviewModel');
 const catchAsync = require('../utils/catchAsync');
-const APIFeatures = require('./../utils/apiFeatures');
 
 exports.getAllReviews = catchAsync(async (req, res, next) => {
-  const rev = new APIFeatures(review.find(), req.query)
-    .filter()
-    .sort()
-    .limitFields()
-    .paginate();
-  const allreview = await rev.query;
+  const allreview = await review.find();
 
   res.status(200).json({
     status: 'success',
