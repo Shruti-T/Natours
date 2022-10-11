@@ -10,8 +10,8 @@
   },
   {
     "_id": "5c8a1dfa2f8fb814b56fa181",
-    "name": "Seema Tiwari",
-    "email": "seema@example.com",
+    "name": "Shaivy Tiwari",
+    "email": "loulou@example.com",
     "role": "user",
     "active": true,
     "photo": "user-2.jpg",
@@ -19,8 +19,8 @@
   },
   {
     "_id": "5c8a1e1a2f8fb814b56fa182",
-    "name": "Atul Tiwari",
-    "email": "atul@example.com",
+    "name": "Seema",
+    "email": "sophie@example.com",
     "role": "user",
     "active": true,
     "photo": "user-3.jpg",
@@ -28,8 +28,8 @@
   },
   {
     "_id": "5c8a1ec62f8fb814b56fa183",
-    "name": "Niyati",
-    "email": "nini@example.com",
+    "name": "Ayla Cornell",
+    "email": "ayls@example.com",
     "role": "user",
     "active": true,
     "photo": "user-4.jpg",
@@ -37,7 +37,7 @@
   },
   {
     "_id": "5c8a1f292f8fb814b56fa184",
-    "name": "Leo Gillespie",
+    "name": "Atul Tiwari",
     "email": "leo@example.com",
     "role": "guide",
     "active": true,
@@ -46,7 +46,7 @@
   },
   {
     "_id": "5c8a1f4e2f8fb814b56fa185",
-    "name": "Jennifer Hardy",
+    "name": "Jennifer",
     "email": "jennifer@example.com",
     "role": "guide",
     "active": true,
@@ -100,8 +100,8 @@
   },
   {
     "_id": "5c8a22c62f8fb814b56fa18b",
-    "name": "Shaivy Tiwari",
-    "email": "shaa@example.com",
+    "name": "Miyah Myles",
+    "email": "miyah@example.com",
     "role": "lead-guide",
     "active": true,
     "photo": "user-12.jpg",
@@ -109,8 +109,8 @@
   },
   {
     "_id": "5c8a23412f8fb814b56fa18c",
-    "name": "Sachin",
-    "email": "sach@example.com",
+    "name": "Ben Hadley",
+    "email": "ben@example.com",
     "role": "guide",
     "active": true,
     "photo": "user-13.jpg",
