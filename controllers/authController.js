@@ -110,6 +110,30 @@ exports.protect = catchAsync(async (req, res, next) => {
   next();
 });
 
+//Only for rendered pages, no errors!
+exports.isLoggedIn = catchAsync(async (req, res, next) => {
+  if (req.cookies.jwt) {
+    //verfies the token
+    const decoded = await promisify(jwt.verify)(
+      req.cookies.jwt,
+      process.env.JWT_SECRET
+    );
+    //check if user still exists
+    const freshUser = await User.findById(decoded.id);
+    if (!freshUser) {
+      return next();
+    }
+    //check if user change password after thetoken was issued
+    if (freshUser.changedPasswordAfter(decoded.iat)) {
+      return next();
+    }
+    //There is a logged in user
+    res.locals.user = freshUser;
+    return next();
+  }
+  next();
+});
+
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
     //roles is an array --> [admin,lead-guide]. Role defalut is 'user'
