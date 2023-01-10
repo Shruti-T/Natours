@@ -7,6 +7,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp'); //http parameter pollution---> full form
+const cookieParser = require('cookie-parser');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -27,8 +28,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Set security HTTP headers
 // app.use(helmet());
 app.use(
-  helmet({
-    crossOriginEmbedderPolicy: false
+  // helmet();
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'", 'data:', 'blob:'],
+
+      fontSrc: ["'self'", 'https:', 'data:'],
+
+      scriptSrc: ["'self'", 'unsafe-inline'],
+
+      scriptSrc: ["'self'", 'https://*.cloudflare.com'],
+
+      scriptSrcElem: ["'self'", 'https:', 'https://*.cloudflare.com'],
+
+      styleSrc: ["'self'", 'https:', 'unsafe-inline'],
+
+      connectSrc: ["'self'", 'data', 'https://*.cloudflare.com']
+    }
   })
 );
 
@@ -47,6 +63,7 @@ app.use('/api', limiter);
 
 //Body parser,reading data from the body into req.body [the '10kb' is 10 kiloByte, basically limiting the amount of body data so if user adds anything forcefully to body it is not accepted]
 app.use(express.json({ limit: '10kb' }));
+app.use(cookieParser());
 
 //Data sanitization against NoSQL query injection---> try postman login but in place of email put-> {"gt":""}
 //this will filter out all of the $,. symbols
@@ -73,7 +90,7 @@ app.use(
 //test middleware
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
-  // console.log(req.headers);
+  // console.log(req.cookies);
   next();
 });
 

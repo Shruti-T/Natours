@@ -29,7 +29,6 @@ const creatAndSendToken = (user, statusCode, res) => {
 
   //remove the password from the output
   user.password = undefined;
-
   res.status(statusCode).json({
     status: 'success',
     token,
@@ -53,7 +52,6 @@ exports.signUp = catchAsync(async (req, res, next) => {
 
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
-
   //1) if email and password exist?
   if (!email || !password) {
     return next(new AppError('Please provide email and password', 400));
@@ -65,7 +63,6 @@ exports.login = catchAsync(async (req, res, next) => {
   if (!user || !(await user.correctPassword(password, user.password))) {
     return next(new AppError('Incorrect email or password', 401));
   }
-
   //3) if everything ok, send token to client.
   creatAndSendToken(user, 200, res);
 });
@@ -78,6 +75,8 @@ exports.protect = catchAsync(async (req, res, next) => {
     req.headers.authorization.startsWith('Bearer')
   ) {
     token = req.headers.authorization.split(' ')[1];
+  } else if (req.cookies.jwt) {
+    token = req.cookies.jwt;
   }
   if (!token) {
     return next(
