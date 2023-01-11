@@ -1,5 +1,5 @@
 import '@babel/polyfill';
-import displayMap from './mapbox';
+import { displayMap } from './mapbox.js';
 import { login } from './login';
 
 // DOM elements
