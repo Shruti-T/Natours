@@ -6587,7 +6587,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.displayMap = void 0;
 
 var displayMap = function displayMap(locations) {
-  console.log('-------------11', locations);
   mapboxgl.accessToken = 'pk.eyJ1IjoidGl3YXJpc2hydXRpIiwiYSI6ImNsY3B0YjZybTA2N3kzb2xxcTdmYWNhbXAifQ.I1uqTM4lrwrM-1h4m-TkyA';
   var map = new mapboxgl.Map({
     container: 'map',
