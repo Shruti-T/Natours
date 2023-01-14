@@ -11,20 +11,20 @@ block content
     main.main
         .user-view
             nav.user-view__menu
-            ul.side-nav
-                +navItem('#','Settings','settings',true)
-                +navItem('#','My bookings','briefcase',)
-                +navItem('#','My reviews','star')
-                +navItem('#','Billing','credit-card')
+                ul.side-nav
+                    +navItem('#','Settings','settings',true)
+                    +navItem('#','My bookings','briefcase',)
+                    +navItem('#','My reviews','star')
+                    +navItem('#','Billing','credit-card')
 
-            - if(user.role==='admin')
-                .admin-nav
-                    h5.admin-nav__heading Admin
-                    ul.side-nav
-                        +navItem('#','Manage tours','map')
-                        +navItem('#','Manage users','users')
-                        +navItem('#','Manage reviews','star')
-                        +navItem('#','Manage Bookings','briefcase')
+                - if (user.role==='admin')
+                    .admin-nav
+                        h5.admin-nav__heading Admin
+                        ul.side-nav
+                            +navItem('#','Manage tours','map')
+                            +navItem('#','Manage users','users')
+                            +navItem('#','Manage reviews','star')
+                            +navItem('#','Manage Bookings','briefcase')
 
             .user-view__content
                 .user-view__form-container
@@ -37,7 +37,7 @@ block content
                             label.form__label(for='email') Email address
                             input#email.form__input(type='email', value=`${user.email}`, required)
                         .form__group.form__photo-upload
-                            img.form__user-photo(src=`/img/users/${user.name}`, alt='User photo')
+                            img.form__user-photo(src=`/img/users/${user.photo}`, alt='User photo')
                             a.btn-text(href='') Choose new photo
                         .form__group.right
                             button.btn.btn--small.btn--green Save settings
