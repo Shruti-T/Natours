@@ -63,6 +63,7 @@ app.use('/api', limiter);
 
 //Body parser,reading data from the body into req.body [the '10kb' is 10 kiloByte, basically limiting the amount of body data so if user adds anything forcefully to body it is not accepted]
 app.use(express.json({ limit: '10kb' }));
+app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use(cookieParser());
 
 //Data sanitization against NoSQL query injection---> try postman login but in place of email put-> {"gt":""}
