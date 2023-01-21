@@ -35,7 +35,7 @@ app.use(
 
       fontSrc: ["'self'", 'https:', 'data:'],
 
-      scriptSrc: ["'self'", 'unsafe-inline'],
+      // scriptSrc: ["'self'", 'unsafe-inline'],
 
       scriptSrc: ["'self'", 'https://*.cloudflare.com'],
 
