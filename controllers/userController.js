@@ -46,8 +46,6 @@ exports.getMe = (req, res, next) => {
 };
 
 exports.updateMe = catchAsync(async (req, res, next) => {
-  console.log(req.file);
-  console.log(req.body);
   // 1) create error if user post Password data
   if (req.body.password || req.body.passwordConfirm) {
     return next(
@@ -59,10 +57,13 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   }
   // 2) filter out unwanted user body data that are not allowed to be updated
   //body.role==not to be allowed to get updated... so filter the "body"
-  const filterdBody = filterObj(req.body, 'name', 'email');
+  const filteredBody = filterObj(req.body, 'name', 'email');
+  if (req.file) {
+    filteredBody.photo = req.file.filename;
+  }
 
   // 3) update user document
-  const updatedUser = await User.findByIdAndUpdate(req.user.id, filterdBody, {
+  const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {
     new: true,
     runValidators: true
   });
