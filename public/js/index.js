@@ -11,8 +11,6 @@ const logOutBtn = document.querySelector('.nav__el--logout');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 
-console.log(userDataForm);
-
 //DELEGATIONS
 if (mapBox) {
   const locations = JSON.parse(mapBox.dataset.locations);
@@ -35,12 +33,10 @@ if (logOutBtn) {
 if (userDataForm) {
   userDataForm.addEventListener('submit', e => {
     e.preventDefault();
-    const form = newFormData();
-    form.append('name', document.getElementById('email').value);
-    form.append('email', document.getElementById('name').value);
+    const form = new FormData();
+    form.append('name', document.getElementById('name').value);
+    form.append('email', document.getElementById('email').value);
     form.append('photo', document.getElementById('photo').files[0]);
-    console.log('ppppppppppppppppp');
-    console.log(form);
     updateSettings(form, 'data');
   });
 }
