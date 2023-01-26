@@ -49,7 +49,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
   });
 
   const url = `${req.protocol}://${req.get('host')}/me`;
-  console.log(url);
+  // console.log(url);
   await new Email(newUser, url).sendWelcome();
   creatAndSendToken(newUser, 201, res);
 });
@@ -173,7 +173,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 
   //2)generate a random token
   const resetToken = user.changedPasswordResetToken();
-  console.log(resetToken);
+  // console.log(resetToken);
   await user.save({ validateBeforeSave: false });
 
   //3) send it to user email
