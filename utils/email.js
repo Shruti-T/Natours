@@ -29,14 +29,11 @@ module.exports = class Email {
   async send(template, subject) {
     //send the actual email
     //1) render html based on pug template
-    const html = pug.renderFile(
-      `${__dirname}/../views/emails/${template.pug}`,
-      {
-        firstName: this.firstName,
-        url: this.url,
-        subject
-      }
-    );
+    const html = pug.renderFile(`${__dirname}/../views/email/${template}.pug`, {
+      firstName: this.firstName,
+      url: this.url,
+      subject
+    });
 
     //2) define email options
     const mailOptions = {
@@ -51,7 +48,7 @@ module.exports = class Email {
     await this.newTransport().sendMail(mailOptions);
   }
 
-  async sentWelcome() {
+  async sendWelcome() {
     await this.send('welcome', 'Welcome to the Natours familty!');
   }
 };
