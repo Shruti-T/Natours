@@ -14,6 +14,7 @@ const globalErrorHandler = require('./controllers/errorController');
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
+const bookingRouter = require('./routes/bookingRoutes');
 const viewRouter = require('./routes/viewRoutes');
 
 const app = express();
@@ -35,15 +36,13 @@ app.use(
 
       fontSrc: ["'self'", 'https:', 'data:'],
 
-      // scriptSrc: ["'self'", 'unsafe-inline'],
-
-      scriptSrc: ["'self'", 'https://*.cloudflare.com'],
+      scriptSrc: ['https://*.cloudflare.com', 'https://js.stripe.com'],
 
       scriptSrcElem: ["'self'", 'https:', 'https://*.cloudflare.com'],
 
       styleSrc: ["'self'", 'https:', 'unsafe-inline'],
-
-      connectSrc: ["'self'", 'data', 'https://*.cloudflare.com']
+      frameSrc: ['https://js.stripe.com', 'https://hooks.stripe.com'],
+      connectSrc: ['data', 'https://*.cloudflare.com', 'https://api.stripe.com']
     }
   })
 );
@@ -100,6 +99,7 @@ app.use('/', viewRouter);
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
+app.use('/api/v1/bookings', bookingRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Cant find ${req.originalUrl} on this server!`, 404));
