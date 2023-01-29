@@ -36,13 +36,15 @@ app.use(
 
       fontSrc: ["'self'", 'https:', 'data:'],
 
-      scriptSrc: ['https://*.cloudflare.com', 'https://js.stripe.com'],
+      // scriptSrc: ["'self'", 'unsafe-inline'],
+
+      scriptSrc: ["'self'", 'https://*.cloudflare.com'],
 
       scriptSrcElem: ["'self'", 'https:', 'https://*.cloudflare.com'],
 
       styleSrc: ["'self'", 'https:', 'unsafe-inline'],
-      frameSrc: ['https://js.stripe.com', 'https://hooks.stripe.com'],
-      connectSrc: ['data', 'https://*.cloudflare.com', 'https://api.stripe.com']
+
+      connectSrc: ["'self'", 'data', 'https://*.cloudflare.com']
     }
   })
 );
