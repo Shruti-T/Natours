@@ -32,6 +32,10 @@ app.use(cors());
 //for one perticular origin
 //app.use(cors({origin:'https://www.natours.com}))
 
+//for non simple requests(delete, patch..)
+//option is a http method
+app.options('*', cors());
+
 //Set security HTTP headers
 // app.use(helmet());
 app.use(
