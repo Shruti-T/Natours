@@ -53,4 +53,10 @@ router
     tourController.deleteTour
   );
 
+router.route('/coffeeTest/:coffeeData').get((req, res) => {
+  res.status(200).json({
+    data: `the coffee quality is ${88} %`
+  });
+});
+
 module.exports = router;
