@@ -9,6 +9,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp'); //http parameter pollution---> full form
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
+const cors = require('cors');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const tourRouter = require('./routes/tourRoutes');
@@ -26,6 +27,10 @@ app.set('views', path.join(__dirname, 'views'));
 // 1) GLOBAL MIDDLEWARES
 //serving static files
 app.use(express.static(path.join(__dirname, 'public')));
+//Access-Control-Allow-Origin *
+app.use(cors());
+//for one perticular origin
+//app.use(cors({origin:'https://www.natours.com}))
 
 //Set security HTTP headers
 // app.use(helmet());
