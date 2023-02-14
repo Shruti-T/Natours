@@ -38,14 +38,11 @@ app.options('*', cors());
 //Set security HTTP headers
 // app.use(helmet());
 app.use(
-  // helmet();
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'", 'data:', 'blob:'],
 
       fontSrc: ["'self'", 'https:', 'data:'],
-
-      // scriptSrc: ["'self'", 'unsafe-inline'],
 
       scriptSrc: ["'self'", 'https://*.cloudflare.com'],
 
