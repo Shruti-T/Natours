@@ -3,7 +3,7 @@ extends base
 block content
         main.main
             .login-form
-                h2.heading-secondary.ma-bt-lg Log into your account
+                h2.heading-secondary.ma-bt-lg Create your account
                 form.form.form--login
                     .form__group
                         label.form__label(for='name') Name
@@ -15,7 +15,7 @@ block content
                         label.form__label(for='password') Password
                         input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
                     .form__group.ma-bt-md
-                        label.form__label(for='passwordConfirm') Password
+                        label.form__label(for='passwordConfirm') Password Confirm
                         input#passwordConfirm.form__input(type='passwordConfirm', placeholder='••••••••', required, minlength='8')
                     .form__group
                         button.btn.btn--green SignUp
