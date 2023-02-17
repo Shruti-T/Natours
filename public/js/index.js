@@ -40,7 +40,6 @@ if (signUpForm) {
     const password = document.getElementById('password').value;
     const passwordConfirm = document.getElementById('passwordConfirm').value;
     const name = document.getElementById('name').value;
-    console.log(name, email, password, passwordConfirm);
     signUp(name, email, password, passwordConfirm);
   });
 }
