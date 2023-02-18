@@ -50,11 +50,7 @@ app.use(
 
       styleSrc: ["'self'", 'https:', 'unsafe-inline'],
 
-      connectSrc: [
-        "'self'",
-        'data',
-        'https://*.cloudflare.com  ws://localhost:52758/'
-      ]
+      connectSrc: ['self', 'data', 'https://*.cloudflare.com ws://localhost:*/']
     }
   })
 );
