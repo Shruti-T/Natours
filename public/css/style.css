@@ -51,6 +51,11 @@ body {
   flex: 1;
   position: relative;
 }
+@media screen and (max-width: 820px) {
+  .main {
+    padding: 8rem 0rem;
+  }
+}
 
 .flex {
   display: -webkit-box;
@@ -1079,6 +1084,17 @@ body {
   grid-gap: 7rem;
 }
 
+@media screen and (max-width: 1050px) {
+  .card-container {
+    grid-template-columns: 46% auto;
+  }
+}
+@media screen and (max-width: 820px) {
+  .card-container {
+    grid-template-columns: 100% auto;
+  }
+}
+
 .card {
   border-radius: 3px;
   overflow: hidden;
@@ -1097,6 +1113,8 @@ body {
   -ms-flex-direction: column;
   flex-direction: column;
 }
+
+
 .card__header {
   position: relative;
 }
