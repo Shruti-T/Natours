@@ -922,6 +922,19 @@ body {
   cursor: pointer;
   font-family: inherit;
 }
+@media only screen and (max-width:1000px) {
+  .nav__el,
+  .nav__el:link,
+  .nav__el:visited  {
+    color:black
+  }
+}
+
+@media only screen and (max-width:600px) {
+  .navLog{
+    margin-top: 10px;
+  }
+}
 .nav__el:hover,
 .nav__el:active {
   -webkit-transform: translateY(-2px);
@@ -952,6 +965,12 @@ body {
   color: #777;
   text-shadow: none;
   border-color: #f7f7f7;
+}
+@media only screen and (max-width:1000px) {
+  .nav__el--cta {
+    border-style: none !important;
+
+}
 }
 .nav__search {
   display: -webkit-box;
