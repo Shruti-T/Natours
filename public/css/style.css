@@ -492,6 +492,11 @@ body {
 .description-box .description__text:not(:last-child) {
   margin-bottom: 2rem;
 }
+@media only screen and (max-width: 550px){
+  .section-description {
+    display: block;
+  }
+}
 
 .overview-box {
   background-color: #f7f7f7;
