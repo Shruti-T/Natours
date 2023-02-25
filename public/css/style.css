@@ -865,7 +865,7 @@ body {
 .nav {
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  /* display: flex; */
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -929,7 +929,9 @@ body {
     color:black
   }
 }
-
+.navLog{
+  margin-left: 20px;
+}
 @media only screen and (max-width:600px) {
   .navLog{
     margin-top: 10px;

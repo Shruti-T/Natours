@@ -53,7 +53,7 @@ app.use(
       connectSrc: [
         "'self'",
         'data',
-        'https://*.cloudflare.com ws://localhost:60291/'
+        'https://*.cloudflare.com ws://localhost:53880/'
       ]
     }
   })
