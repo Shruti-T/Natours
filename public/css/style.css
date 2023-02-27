@@ -796,10 +796,21 @@ body {
   -ms-flex-align: center;
   align-items: center;
 }
-.cta__text {
-  font-size: 1.9rem;
-  font-weight: 400;
+@media only screen and (max-width: 550px){
+  .cta {
+    padding:5rem 4rem 5rem 5rem;
+    display: block;
+  }
+  .tourpgBookBtn{
+    font-size: 1rem !important;
+  }
 }
+@media only screen and (max-width: 550px){
+  .cta__img{
+    display: none;
+  }
+}
+
 
 .user-view {
   background-color: #fff;
